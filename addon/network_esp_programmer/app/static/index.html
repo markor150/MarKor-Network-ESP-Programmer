@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MarKor Network ESP Programmer</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#111827;
+    color:white;
+    margin:40px;
+}
+
+h1{
+    margin-top:0;
+}
+
+.card{
+    background:#1f2937;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:10px 20px;
+    cursor:pointer;
+}
+
+select,input{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+}
+
+pre{
+    background:black;
+    color:#00ff66;
+    padding:10px;
+    overflow:auto;
+    max-height:500px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>MarKor Network ESP Programmer</h1>
+
+<div class="card">
+
+<h2>Programmers</h2>
+
+<select id="programmers"></select>
+
+<button onclick="loadProgrammers()">
+Refresh
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Chip info</h2>
+
+<button onclick="chipid()">
+Read Chip
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>Flash firmware</h2>
+
+<input type="file" id="firmware">
+
+<input
+    type="text"
+    id="address"
+    value="0x0"
+    placeholder="Flash address">
+
+<button onclick="flashFirmware()">
+Flash
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Log</h2>
+
+<pre id="log"></pre>
+
+</div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
