@@ -1,11 +1,11 @@
 # MarKor Network ESP Programmer
 
-Network ESP Programmer for Home Assistant.
+Projekt sieciowego programatora ESP (RFC2217) dla ESPHome i Home Assistant.
 
-## Features
+## Funkcje
 
-- RFC2217 server support
-- ESPHome integration
-- REST API
-- Multi programmer support
-- Home Assistant Add-on
+- RFC2217 (port 3333)
+- Programowanie ESP zdalnie przez sieć
+- Współpraca z ESPHome
+- HTTP status
+- mDNS
