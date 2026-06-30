@@ -96,6 +96,7 @@ async function flashFirmware(){
 }
 
 async function addProgrammer(){
+    println("addProgrammer() called");
 
     const body = {
         name: document.getElementById("name").value,
