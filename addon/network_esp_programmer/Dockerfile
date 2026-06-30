@@ -1,30 +1,25 @@
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
-ENV LANG=C.UTF-8
-
 RUN apk add --no-cache \
     bash \
     python3 \
     py3-pip \
     git \
     curl \
-    openssh-client \
     avahi \
     avahi-tools \
+    openssh-client \
     netcat-openbsd
 
-COPY app/requirements.txt /tmp/requirements.txt
-
-RUN pip3 install --break-system-packages \
-    --no-cache-dir \
-    -r /tmp/requirements.txt
-
-COPY rootfs /
 COPY app /app
 
-RUN chmod +x /run.sh
+COPY rootfs /
 
-WORKDIR /app
+COPY run.sh /run.sh
+
+RUN pip3 install --break-system-packages -r /app/requirements.txt
+
+RUN chmod +x /run.sh
 
 CMD ["/run.sh"]
