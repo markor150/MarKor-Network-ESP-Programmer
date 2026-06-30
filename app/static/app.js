@@ -94,3 +94,27 @@ async function flashFirmware(){
         "\n" +
         result.stderr;
 }
+
+async function addProgrammer(){
+
+    const body = {
+        name: document.getElementById("name").value,
+        host: document.getElementById("host").value,
+        port: parseInt(document.getElementById("port").value)
+    };
+
+    const response = await fetch("/programmers",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(body)
+    });
+
+    const result = await response.json();
+
+    println(JSON.stringify(result,null,2));
+
+    loadProgrammers();
+}
+
