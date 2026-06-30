@@ -102,11 +102,6 @@ async def flash_endpoint(request):
     return web.json_response(result)
 
 
-app = web.Application()
-app.router.add_static("/static", os.path.join(os.path.dirname(__file__), "static"))
-app.add_routes(routes)
-
-web.run_app(app, host="0.0.0.0", port=8099)
 
 @routes.post("/programmers")
 async def add_programmer(request):
@@ -124,4 +119,10 @@ async def add_programmer(request):
         save(programmers)
 
     return web.json_response(item)
+
+app = web.Application()
+app.router.add_static("/static", os.path.join(os.path.dirname(__file__), "static"))
+app.add_routes(routes)
+
+web.run_app(app, host="0.0.0.0", port=8099)
 
