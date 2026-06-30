@@ -14,7 +14,6 @@ RUN apk add --no-cache \
 
 COPY app /app
 
-COPY rootfs /
 
 COPY run.sh /run.sh
 
