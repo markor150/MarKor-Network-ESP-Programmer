@@ -5,5 +5,9 @@ bashio::log.info " MarKor Network ESP Programmer"
 bashio::log.info "===================================="
 
 python3 --version
-esptool.py version
+esptool version
 esphome version
+
+cd /app
+
+exec python3 main.py
