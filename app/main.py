@@ -1,12 +1,13 @@
 import os
 from aiohttp import web
 from esptool_api import chip_id, flash
+from storage import load, save
 from zeroconf import Zeroconf, ServiceBrowser
 import socket
 import threading
 import time
 
-programmers = []
+programmers = load()
 
 class Listener:
     def add_service(self, zc, service_type, name):
@@ -23,6 +24,7 @@ class Listener:
 
         if item not in programmers:
             programmers.append(item)
+            save(programmers)
             print("Found:", item)
 
     def update_service(self, *args):
@@ -105,3 +107,21 @@ app.router.add_static("/static", os.path.join(os.path.dirname(__file__), "static
 app.add_routes(routes)
 
 web.run_app(app, host="0.0.0.0", port=8099)
+
+@routes.post("/programmers")
+async def add_programmer(request):
+
+    data = await request.json()
+
+    item = {
+        "name": data["name"],
+        "host": data["host"],
+        "port": int(data["port"]),
+    }
+
+    if item not in programmers:
+        programmers.append(item)
+        save(programmers)
+
+    return web.json_response(item)
+
