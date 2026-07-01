@@ -17,6 +17,7 @@ init: false
 
 ingress: true
 ingress_port: 8099
+
 panel_icon: mdi:chip
 panel_title: ESP Programmer
 
@@ -28,6 +29,11 @@ ports_description:
 
 map: []
 
-options: {}
+options:
+  programmers: []
 
-schema: {}
+schema:
+  programmers:
+    - name: str
+      host: str
+      port: int
