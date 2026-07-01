@@ -87,9 +87,6 @@ document
     .addEventListener("click", loadProgrammers);
 
 document
-    .getElementById("add")
-    .addEventListener("click", addProgrammer);
-
 document
     .getElementById("chipid")
     .addEventListener("click", chipid);
